@@ -25,7 +25,7 @@ g_hided = False
 # advanced feature
 g_max_connect=256
 g_permission = "elradfmw"                #允许权限
-g_bautosetup = 0                         #是否随机启动
+g_bautostartup = 0                         #是否随机启动
 
 
 
@@ -37,7 +37,7 @@ def read_config():
     global g_banonymous
     global g_hided
 
-    global g_bautosetup
+    global g_bautostartup
     global g_max_connect
     global g_permission
 
@@ -63,9 +63,10 @@ def read_config():
         if cf.has_option("advanced","permission"):
             g_permission = cf.get("advanced","permission","elradfmw").decode("GBK")
         if cf.has_option("advanced","autosetup"):
-            g_bautosetup = cf.getboolean("advanced","autosetup")
+            g_bautostartup = cf.getboolean("advanced", "autosetup")
 
         check_ini_para()
+        auto_setup(g_bautostartup)
         return  True
     except Exception, ex:
         print ex
@@ -81,7 +82,7 @@ def check_ini_para():
     global g_port
     global g_banonymous
     global g_hided
-    global g_bautosetup
+    global g_bautostartup
     global g_max_connect
     global g_permission
 
@@ -105,7 +106,7 @@ def run():
     global g_port
     global g_banonymous
     global g_hided
-    global g_bautosetup
+    global g_bautostartup
     global g_max_connect
     global g_permission
 
@@ -149,6 +150,7 @@ def auto_setup(t_bsetup):
     if t_bsetup is False:
         return
     # doing something to setup with windows
+
 
 
 
